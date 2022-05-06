@@ -30,7 +30,7 @@ CREATE TABLE artists(
   artist_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE albuns(
+CREATE TABLE albums(
   album_id INT PRIMARY KEY AUTO_INCREMENT,
   album_name VARCHAR(100) NOT NULL,
   artist_id INT NOT NULL,
@@ -105,7 +105,7 @@ VALUES
   ('Tyler Isle'),
   ('Fog');
 
-INSERT INTO albuns (album_name, artist_id, release_year)
+INSERT INTO albums (album_name, artist_id, release_year)
 VALUES
   ('Envious', 1, 1990),
   ('Exuberant', 1, 1993),
