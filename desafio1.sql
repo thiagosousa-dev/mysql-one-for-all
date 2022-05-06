@@ -95,3 +95,12 @@ VALUES
   (8, 3, '2018-02-14'),
   (9, 2, '2018-04-29'),
   (10, 2, '2017-01-17');
+
+INSERT INTO artists (artist_name)
+VALUES
+  ('Walter Phoenix'),
+  ('Peter Strong'),
+  ('Lance Day'),
+  ('Freedie Shannon'),
+  ('Tyler Isle'),
+  ('Fog');
