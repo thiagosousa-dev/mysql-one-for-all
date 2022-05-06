@@ -53,3 +53,12 @@ CREATE TABLE users_artists(
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
   CONSTRAINT PRIMARY KEY(user_id, artist_id)
 );
+
+CREATE TABLE users_songs(
+  user_id INT NOT NULL,
+  song_id INT NOT NULL,
+  reproduction_date DATETIME NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (song_id) REFERENCES songs(song_id),
+  CONSTRAINT PRIMARY KEY(user_id, song_id)
+);
