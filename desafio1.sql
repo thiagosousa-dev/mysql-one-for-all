@@ -47,11 +47,11 @@ CREATE TABLE songs(
 );
 
 CREATE TABLE users_artists(
-  user_id INT NOT NULL,
   artist_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  user_id INT NOT NULL,
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
-  CONSTRAINT PRIMARY KEY(user_id, artist_id)
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  CONSTRAINT PRIMARY KEY(artist_id, user_id)
 );
 
 CREATE TABLE users_songs(
@@ -160,3 +160,28 @@ VALUES
   ("Wouldn't It Be Nice", 10, 213),
   ('Baby', 10, 136),
   ('You Make Me Feel So..', 10, 83);
+
+INSERT INTO users_artists (artist_id, user_id)
+VALUES
+  (1, 1),
+  (4, 1),
+  (3, 1),
+  (1, 2),
+  (3, 2),
+  (2, 3),
+  (1, 3),
+  (4, 4),
+  (5, 5),
+  (6, 5),
+  (6, 6),
+  (3, 6),
+  (1, 6),
+  (2, 7),
+  (5, 7),
+  (1, 8),
+  (5, 8),
+  (6, 9),
+  (4, 9),
+  (3, 9),
+  (2, 10),
+  (6, 10);
