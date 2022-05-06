@@ -29,3 +29,11 @@ CREATE TABLE artists(
   artist_id INT PRIMARY KEY AUTO_INCREMENT,
   artist_name VARCHAR(100) NOT NULL
 );
+
+CREATE TABLE albuns(
+  album_id INT PRIMARY KEY AUTO_INCREMENT,
+  album_name VARCHAR(100) NOT NULL,
+  artist_id INT NOT NULL,
+  release_year YEAR,
+  FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+);
