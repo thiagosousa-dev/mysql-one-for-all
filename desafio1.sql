@@ -62,3 +62,10 @@ CREATE TABLE users_songs(
   FOREIGN KEY (song_id) REFERENCES songs(song_id),
   CONSTRAINT PRIMARY KEY(user_id, song_id)
 );
+
+INSERT INTO plans (plan_name, plan_value)
+VALUES
+  ('gratuito', 0),
+  ('familiar', 7.99),
+  ('universitário', 5.99),
+  ('pessoal', 6.99);
