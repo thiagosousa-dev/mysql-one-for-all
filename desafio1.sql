@@ -24,3 +24,8 @@ CREATE TABLE users_plans(
   FOREIGN KEY (plan_id) REFERENCES plans(plan_id),
   CONSTRAINT PRIMARY KEY(user_id, plan_id)
 );
+
+CREATE TABLE artists(
+  artist_id INT PRIMARY KEY AUTO_INCREMENT,
+  artist_name VARCHAR(100) NOT NULL
+);
