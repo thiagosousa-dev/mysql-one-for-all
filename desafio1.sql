@@ -45,3 +45,11 @@ CREATE TABLE songs(
   seconds_duration INT NOT NULL,
   FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 );
+
+CREATE TABLE users_artists(
+  user_id INT NOT NULL,
+  artist_id INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
+  CONSTRAINT PRIMARY KEY(user_id, artist_id)
+);
