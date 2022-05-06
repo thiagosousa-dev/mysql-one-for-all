@@ -69,3 +69,16 @@ VALUES
   ('familiar', 7.99),
   ('universitário', 5.99),
   ('pessoal', 6.99);
+
+INSERT INTO users (user_name, user_age, plan_id)
+VALUES
+  ('Thati', 23, 1),
+  ('Cintia', 35, 2),
+  ('Bill', 20, 3),
+  ('Roger', 45, 4),
+  ('Norman', 58, 4),
+  ('Patrick', 33, 2)
+  ('Vivian', 26, 3),
+  ('Carol', 19, 3),
+  ('Angelina', 42, 2),
+  ('Paul', 46, 2);
