@@ -37,3 +37,11 @@ CREATE TABLE albuns(
   release_year YEAR,
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 );
+
+CREATE TABLE songs(
+  song_id INT PRIMARY KEY AUTO_INCREMENT,
+  song_name VARCHAR(100) NOT NULL,
+  album_id INT NOT NULL,
+  seconds_duration INT NOT NULL,
+  FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+);
