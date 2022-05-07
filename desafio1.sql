@@ -3,65 +3,66 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE plans(
-  plan_id INT PRIMARY KEY AUTO_INCREMENT,
-  plan_name VARCHAR(100) NOT NULL,
-  plan_value DECIMAL(5,2) NOT NULL,
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    plan_name VARCHAR(255) NOT NULL,
+    plan_value DECIMAL(5,2) NOT NULL
 );
 
 CREATE TABLE users(
-  user_id INT PRIMARY KEY AUTO_INCREMENT,
-  user_name VARCHAR(100) NOT NULL,
-  user_age INT NOT NULL,
-  plan_id INT NOT NULL,
-  FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    user_age INT NOT NULL,
+    plan_id INT NOT NULL,
+	FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
 );
 
 CREATE TABLE users_plans(
-  user_id INT NOT NULL,
-  plan_id INT NOT NULL,
-  signature_date DATE NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
-  FOREIGN KEY (plan_id) REFERENCES plans(plan_id),
-  CONSTRAINT PRIMARY KEY(user_id, plan_id)
+    plan_id INT NOT NULL,
+    user_id INT NOT NULL,
+    signature_date DATETIME NOT NULL,
+	FOREIGN KEY (plan_id) REFERENCES plans(plan_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    CONSTRAINT PRIMARY KEY(plan_id, user_id)
 );
 
 CREATE TABLE artists(
-  artist_id INT PRIMARY KEY AUTO_INCREMENT,
-  artist_name VARCHAR(100) NOT NULL
+    artist_id INT AUTO_INCREMENT PRIMARY KEY,
+    artist_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE albums(
-  album_id INT PRIMARY KEY AUTO_INCREMENT,
-  album_name VARCHAR(100) NOT NULL,
-  artist_id INT NOT NULL,
-  release_year YEAR,
-  FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+    album_id INT AUTO_INCREMENT PRIMARY KEY,
+    album_name VARCHAR(255) NOT NULL,
+    artist_id INT NOT NULL,
+    release_year YEAR,
+    FOREIGN KEY (artist_id) REFERENCES artists(artist_id)    
 );
 
 CREATE TABLE songs(
-  song_id INT PRIMARY KEY AUTO_INCREMENT,
-  song_name VARCHAR(100) NOT NULL,
-  album_id INT NOT NULL,
-  seconds_duration INT NOT NULL,
-  FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+    song_id INT AUTO_INCREMENT PRIMARY KEY,
+    song_name VARCHAR(255) NOT NULL,
+    album_id INT NOT NULL,
+    seconds_duration INT UNSIGNED NOT NULL,
+	FOREIGN KEY (album_id) REFERENCES albums(album_id)
 );
 
 CREATE TABLE users_artists(
-  artist_id INT NOT NULL,
-  user_id INT NOT NULL,
-  FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
-  CONSTRAINT PRIMARY KEY(artist_id, user_id)
+    artist_id INT NOT NULL,
+    user_id INT NOT NULL,
+    CONSTRAINT PRIMARY KEY(artist_id, user_id),
+	FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE users_songs(
-  song_id INT NOT NULL,
-  user_id INT NOT NULL,
-  reproduction_date DATETIME NOT NULL,
-  FOREIGN KEY (song_id) REFERENCES songs(song_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
-  CONSTRAINT PRIMARY KEY(song_id, user_id)
+    song_id INT NOT NULL,
+    user_id INT NOT NULL,
+    reproduction_date DATETIME NOT NULL,
+	FOREIGN KEY (song_id) REFERENCES songs(song_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    CONSTRAINT PRIMARY KEY(song_id, user_id) 
 );
+
 
 INSERT INTO plans (plan_name, plan_value)
 VALUES
@@ -77,7 +78,7 @@ VALUES
   ('Bill', 20, 3),
   ('Roger', 45, 4),
   ('Norman', 58, 4),
-  ('Patrick', 33, 2)
+  ('Patrick', 33, 2),
   ('Vivian', 26, 3),
   ('Carol', 19, 3),
   ('Angelina', 42, 2),
@@ -90,7 +91,7 @@ VALUES
   (3, 3, '2019-06-05'),
   (4, 4, '2020-05-13'),
   (5, 4, '2017-02-17'),
-  (6, 2, '2017-01-06')
+  (6, 2, '2017-01-06'),
   (7, 3, '2018-01-05'),
   (8, 3, '2018-02-14'),
   (9, 2, '2018-04-29'),
@@ -112,7 +113,7 @@ VALUES
   ('Hallowed Steam', 2, 1995),
   ('Incandescent', 3, 1998),
   ('Temporary Culture', 4, 2001),
-  ('Library of liberty', 4, 2003)
+  ('Library of liberty', 4, 2003),
   ('Chained Down', 5, 2007),
   ('Cabinet of fools', 5, 2012),
   ('No guarantees', 5, 2015),
@@ -226,4 +227,3 @@ VALUES
   (21, 10, '2017-12-04 05:33:43'),
   (12, 10, '2017-07-27 05:24:49'),
   (13, 10, '2017-12-25 01:03:57');
-
